@@ -2,12 +2,24 @@
 :source:
   :path: test
   :file: test_ButtonSM.c
-:successes: []
+:successes:
+- :test: test_buttonInitData_should_set_state_to_RELEASE
+  :line: 9
+  :message: ''
+- :test: test_buttonSM_should_set_state_to_PRESS
+  :line: 19
+  :message: ''
+- :test: test_buttonSM_should_set_state_to_RELEASE_when_enter_case_twice
+  :line: 33
+  :message: ''
+- :test: test_buttonSM_should_set_to_PRESS_if_hold
+  :line: 49
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 0
-  :passed: 0
+  :total: 4
+  :passed: 4
   :failed: 0
   :ignored: 0
 :stdout: []

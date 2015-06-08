@@ -35,6 +35,10 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
+extern void test_buttonInitData_should_set_state_to_RELEASE(void);
+extern void test_buttonSM_should_set_state_to_PRESS(void);
+extern void test_buttonSM_should_set_state_to_RELEASE_when_enter_case_twice(void);
+extern void test_buttonSM_should_set_to_PRESS_if_hold(void);
 
 
 //=======Mock Management=====
@@ -70,6 +74,10 @@ int main(void)
 {
   Unity.TestFile = "test_ButtonSM.c";
   UnityBegin();
+  RUN_TEST(test_buttonInitData_should_set_state_to_RELEASE, 9);
+  RUN_TEST(test_buttonSM_should_set_state_to_PRESS, 19);
+  RUN_TEST(test_buttonSM_should_set_state_to_RELEASE_when_enter_case_twice, 33);
+  RUN_TEST(test_buttonSM_should_set_to_PRESS_if_hold, 49);
 
   return (UnityEnd());
 }

@@ -24,6 +24,6 @@ void test_message_passing_send_a_message_LedState_should_change_to_LED_ON(void){
   
   TEST_ASSERT_EQUAL(buttonData.state, PRESS);
   
-  TEST_ASSERT_EQUAL(ledData.state, LED_ON);
+  TEST_ASSERT_EQUAL(ledData.state, LED_BLINKING_ON);
   
 }

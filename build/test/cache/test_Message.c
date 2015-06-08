@@ -45,7 +45,7 @@ void test_message_passing_send_a_message_LedState_should_change_to_LED_ON(void){
 
 
 
-  UnityAssertEqualNumber((_U_SINT)((ledData.state)), (_U_SINT)((LED_ON)), (((void *)0)), (_U_UINT)27, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((ledData.state)), (_U_SINT)((LED_BLINKING_ON)), (((void *)0)), (_U_UINT)27, UNITY_DISPLAY_STYLE_INT);
 
 
 

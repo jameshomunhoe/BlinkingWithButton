@@ -19,8 +19,10 @@ void buttonSM(ButtonData *data){
       
       
     case PRESS:
-      msg = DO_NOTHING;
-      data->state = RELEASE;
+      if(isButtonPress() == 0){
+        msg = DO_NOTHING;
+        data->state = RELEASE;
+      }
       break;
     
     
