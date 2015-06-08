@@ -8,9 +8,12 @@
   Unity.NumberOfTests++; \
   if (TEST_PROTECT()) \
   { \
+      CMock_Init(); \
       setUp(); \
       TestFunc(); \
+      CMock_Verify(); \
   } \
+  CMock_Destroy(); \
   if (TEST_PROTECT() && !TEST_IS_IGNORED) \
   { \
     tearDown(); \
@@ -20,8 +23,10 @@
 
 //=======Automagically Detected Files To Include=====
 #include "unity.h"
+#include "cmock.h"
 #include <setjmp.h>
 #include <stdio.h>
+#include "mock_Button.h"
 
 int GlobalExpectCount;
 int GlobalVerifyOrder;
@@ -30,13 +35,33 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_module_generator_needs_to_be_implemented(void);
+extern void test_message_passing_send_a_message_LedState_should_change_to_LED_ON(void);
 
+
+//=======Mock Management=====
+static void CMock_Init(void)
+{
+  GlobalExpectCount = 0;
+  GlobalVerifyOrder = 0;
+  GlobalOrderError = NULL;
+  mock_Button_Init();
+}
+static void CMock_Verify(void)
+{
+  mock_Button_Verify();
+}
+static void CMock_Destroy(void)
+{
+  mock_Button_Destroy();
+}
 
 //=======Test Reset Option=====
 void resetTest()
 {
+  CMock_Verify();
+  CMock_Destroy();
   tearDown();
+  CMock_Init();
   setUp();
 }
 
@@ -46,7 +71,7 @@ int main(void)
 {
   Unity.TestFile = "test_Message.c";
   UnityBegin();
-  RUN_TEST(test_module_generator_needs_to_be_implemented, 12);
+  RUN_TEST(test_message_passing_send_a_message_LedState_should_change_to_LED_ON, 10);
 
   return (UnityEnd());
 }

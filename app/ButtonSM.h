@@ -8,4 +8,8 @@ typedef struct{
   State state;
 }ButtonData;
 
+//function prototype
+void buttonInitData(ButtonData *data);
+void buttonSM(ButtonData *data);
+
 #endif // ButtonSM_H
