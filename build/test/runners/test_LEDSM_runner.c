@@ -27,6 +27,7 @@
 #include <setjmp.h>
 #include <stdio.h>
 #include "mock_Button.h"
+#include "mock_Time.h"
 
 int GlobalExpectCount;
 int GlobalVerifyOrder;
@@ -35,6 +36,7 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
+extern void test_ledSM_state_will_go_LED_BLINKING_ON_with_button_released(void);
 
 
 //=======Mock Management=====
@@ -44,14 +46,17 @@ static void CMock_Init(void)
   GlobalVerifyOrder = 0;
   GlobalOrderError = NULL;
   mock_Button_Init();
+  mock_Time_Init();
 }
 static void CMock_Verify(void)
 {
   mock_Button_Verify();
+  mock_Time_Verify();
 }
 static void CMock_Destroy(void)
 {
   mock_Button_Destroy();
+  mock_Time_Destroy();
 }
 
 //=======Test Reset Option=====
@@ -70,6 +75,7 @@ int main(void)
 {
   Unity.TestFile = "test_LEDSM.c";
   UnityBegin();
+  RUN_TEST(test_ledSM_state_will_go_LED_BLINKING_ON_with_button_released, 59);
 
   return (UnityEnd());
 }

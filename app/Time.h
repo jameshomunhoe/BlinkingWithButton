@@ -1,6 +1,6 @@
 #ifndef Time_H
 #define Time_H
 
-int delay();
+int getCurrentTime();
 
 #endif // Time_H

@@ -1,0 +1,16 @@
+---
+:source:
+  :path: test
+  :file: test_LEDSM.c
+:successes: []
+:failures:
+- :test: test_ledSM_state_will_go_LED_BLINKING_ON_with_button_released
+  :line: 72
+  :message: Function 'isButtonPress' called earlier than expected.
+:ignores: []
+:counts:
+  :total: 1
+  :passed: 0
+  :failed: 1
+  :ignored: 0
+:stdout: []
